@@ -6,5 +6,5 @@ scalaVersion := "2.12.6"
 
 libraryDependencies ++= Seq(
   "org.scalaj" %% "scalaj-http" % "2.4.0",
-  "commons-codec" % "commons-codec" % "1.3.0"
+  "commons-codec" % "commons-codec" % "1.11"
 )
