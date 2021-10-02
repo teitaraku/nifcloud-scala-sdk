@@ -1,7 +1,9 @@
-### sbt
+### compiler
+.bloop
 target/
 project/target/
-
+project/project/
+.metals
+metals.sbt
 ### IntelliJ
 .idea/
-
