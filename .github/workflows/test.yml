@@ -1,4 +1,4 @@
-name: Build
+name: Test
 on:
   push:
     branches:
@@ -7,8 +7,7 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 jobs:
-  sonarcloud:
-    name: SonarCloud
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: checkout
@@ -20,8 +19,10 @@ jobs:
         uses: olafurpg/setup-scala@3d6c824bc1a3ffa8bde6bf8b4865cb4387e3ac31
         with:
           java-version: "adopt@1.8"
-      - name: Build and Test
+      - name: test
         run: sbt -v -Dfile.encoding=UTF-8 +test
+      - name: scoverage
+        run: sbt clean coverage test coverageReport
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
